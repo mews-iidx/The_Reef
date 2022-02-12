@@ -15,6 +15,10 @@ async def read_item(request: Request):
     return templates.TemplateResponse("index.html", {'request': request})
 
 
-@app.get("/items/{id}", response_class=HTMLResponse)
-async def read_item(request: Request, id: str):
-    return templates.TemplateResponse("index.html", {"request": request, "id": id})
+@app.get("/quiz")
+async def read_item(request: Request):
+    return templates.TemplateResponse("quiz.html", {'request': request})
+
+@app.get("/random")
+async def read_item(request: Request):
+    return templates.TemplateResponse("random.html", {'request': request})

@@ -1,0 +1,69 @@
+<html>
+
+<head>
+  <!-- css framework bulma -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@300&display=swap" rel="stylesheet">
+
+  <!-- user files -->
+  <script src="{{ url_for('static', path='scripts/scripts.js') }}"></script>
+  <link rel='shotcut icon' href="{{ url_for('static', path='favicon.ico') }}">
+
+  <title> quiz </title>
+</head>
+
+<body>
+
+
+  <div class='container'>
+  <h1 class="title is-1">問題</h1>
+
+  <div class="box" style='font-size: 2rem'>
+    I'm in a box. <br>
+    I'm in a box. <br>
+    I'm in a box. <br>
+    I'm in a box. <br>
+    I'm in a box. <br>
+    I'm in a box. <br>
+    I'm in a box. <br>
+    I'm in a box. <br>
+    </div>
+    <button id='ans-btn' class="button is-warning is-pulled-right is-large">正解!</button>
+    </div>
+</body>
+
+<style>
+
+.container{
+  height: 100%;
+  width: 100%;
+}
+.box{
+
+  height: 80%;
+}
+
+h1, h2, h3 {
+  text-align: center;
+  margin: 0; 
+  font-family: 'Zen Maru Gothic', sans-serif; 
+}
+
+body {
+  font-family: 'Zen Maru Gothic', sans-serif; 
+  background-color: #FFFFE0;
+}
+
+#ans-btn{
+  font-family: 'Zen Maru Gothic', sans-serif; 
+  font-weight: bold;
+}
+
+   
+</style>
+
+</html>
