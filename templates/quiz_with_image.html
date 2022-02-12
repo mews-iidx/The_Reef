@@ -48,6 +48,10 @@
   <h1 class="title is-1">問題</h1>
   <div id='quiz-box' class="box" style='font-size: 2rem'>
     {{ ret.quiz }} <br>
+    <div class='container has-text-centered'>
+        <!-- TODO: 80%じゃだめかも -->
+        <img src='{{ ret.image_url }}'  style='height:80%'>
+    </div>
   </div>
     <a href='./random/' id='ans-btn' class="button is-warning is-pulled-right is-large">正解!</a>
 </div>

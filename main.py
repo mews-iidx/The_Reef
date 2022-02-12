@@ -27,13 +27,29 @@ async def quiz(request: Request):
     if ret is None:
         return templates.TemplateResponse("index.html", {'request': request})
     j = ret.json()
-    return templates.TemplateResponse("quiz.html", {'request': request, 'ret': j})
+
+    if j['image_url'] is None:
+        return templates.TemplateResponse("quiz.html", {'request': request, 'ret': j})
+    else:
+        return templates.TemplateResponse("quiz_with_image.html", {'request': request, 'ret': j})
     #return templates.TemplateResponse("quiz.html", {'request': request, 'quiz': ret.json()['quiz']})
 
 @app.get("/random")
 async def read_item(request: Request):
-    return templates.TemplateResponse("random.html", {'request': request})
+    ret = requests.get(API_ENDPOINT + '/genre')
 
-@app.get("/result")
-async def read_item(request: Request):
-    return templates.TemplateResponse("result.html", {'request': request})
+    #TODO: エラーハンドリングしたほうがよい
+    if ret is None:
+        return templates.TemplateResponse("index.html", {'request': request})
+    j = ret.json()
+
+    return templates.TemplateResponse("random.html", {'request': request, 'genres': j['genres']})
+
+@app.get("/result/{result_genre}")
+async def read_item(request: Request, result_genre: str):
+    ret = requests.get(API_ENDPOINT + '/result/' + result_genre)
+    if ret is None:
+        return templates.TemplateResponse("index.html", {'request': request})
+    j = ret.json()
+    print(j)
+    return templates.TemplateResponse("result.html", {'request': request, 'ret': j})
