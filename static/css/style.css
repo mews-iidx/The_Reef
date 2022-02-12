@@ -20,8 +20,12 @@ body {
 h1, h2 {
   text-align: center;
   margin: 0; 
-  font-family: 'Sen', sans-serif;
+  /* font-family: 'Zen Maru Gothic', sans-serif; */
 }
+p {
+   font-family: 'Zen Maru Gothic', sans-serif; 
+}
+    
 
 #confetti{
   position: absolute;
