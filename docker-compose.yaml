@@ -1,0 +1,27 @@
+services:
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    volumes:
+      - ./api/app:/api/app
+    ports:
+      - 8000:8000
+    env_file:
+      - ./api/.env.local
+
+  db:
+    build:
+      context: ./db
+      dockerfile: Dockerfile
+    environment:
+      MYSQL_DATABASE: 'reef'
+      MYSQL_ROOT_PASSWORD: root
+      TZ: 'Asia/Tokyo'
+    volumes:
+      - mysql_data:/var/lib/mysql
+    ports:
+      - 3306:3306
+
+volumes:
+  mysql_data:

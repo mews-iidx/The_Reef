@@ -30,8 +30,16 @@ uvicorn main:app --reload
 ## apiサーバ起動
 
 ```bash
-uvicorn api:app --reload --port 8080
+docker-compose up -d --build
+
+# migration
+docker-compose exec api poetry run python -m app.migrate_db
 ```
+
+### Swagger API Docs
+
+APIサーバ起動後
+http://localhost:8080/docs
 
 ## メモ
 
