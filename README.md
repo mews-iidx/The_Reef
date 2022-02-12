@@ -12,15 +12,28 @@
 * python3.8.10
 
 
-## 起動
+## 準備
 
 ```bash
 python3 -m venv
 source venv/bin/activate
 pip install -r requirements.txt
+
+```
+
+## frontサーバ起動
+
+```bash
 uvicorn main:app --reload
 ```
 
+## apiサーバ起動
+
+```bash
+uvicorn api:app --reload --port 8080
+```
+
+## メモ
 
 ## ワイヤーフレーム途中
 
