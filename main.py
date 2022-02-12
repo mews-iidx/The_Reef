@@ -22,3 +22,7 @@ async def read_item(request: Request):
 @app.get("/random")
 async def read_item(request: Request):
     return templates.TemplateResponse("random.html", {'request': request})
+
+@app.get("/result")
+async def read_item(request: Request):
+    return templates.TemplateResponse("result.html", {'request': request})
