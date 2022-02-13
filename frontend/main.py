@@ -46,9 +46,7 @@ async def read_item(request: Request):
         return templates.TemplateResponse("index.html", {"request": request})
     j = ret.json()
 
-    return templates.TemplateResponse(
-        "random.html", {"request": request, "genres": j["genres"]}
-    )
+    return templates.TemplateResponse("random.html", {"request": request, "genres": j})
 
 
 @app.get("/result/{result_genre}")

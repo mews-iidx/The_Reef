@@ -6,7 +6,7 @@ from sqlalchemy.engine import Result
 from sqlalchemy.ext.asyncio import AsyncSession
 
 
-async def get_category(db: AsyncSession) -> dict:
+async def get_categories(db: AsyncSession):
     result: Result = await db.execute(
         select(
             present_model.PresentCategory.name,
@@ -21,11 +21,7 @@ async def get_category(db: AsyncSession) -> dict:
         .group_by(present_model.PresentCategory.name)
     )
 
-    res: dict = {"genres": []}
-    for r in result.all():
-        res["genres"].append({"genre_name": r[0], "genre_count": r[1]})
-    print(res)
-    return res
+    return result.all()
 
 
 async def choose_present(db: AsyncSession, genre_name):
@@ -49,4 +45,4 @@ async def choose_present(db: AsyncSession, genre_name):
     await db.commit()
     await db.refresh(result[0])
 
-    return {"result_name": present.name, "result_image": present.image_path}
+    return present

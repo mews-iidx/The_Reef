@@ -21,10 +21,10 @@
 
   <div class='container'>
     <h1 class="title is-1">景品は・・・</h1>
-    <h1 class="title is-1">{{ ret.result_name }} です!!</h1>
+    <h1 class="title is-1">{{ ret.name }} です!!</h1>
     <div class='has-text-centered'>
         <!-- TODO: 80%じゃだめかも -->
-        <img src='{{ ret.result_image }}'  style='height:60%'>
+        <img src='{{ ret.image_path }}'  style='height:60%'>
     </div>
     <a href='/quiz' id='ans-btn' class="button is-warning is-pulled-right is-large">次へ</a>
   </div>
@@ -39,21 +39,21 @@
 
 h1, h2, h3 {
   text-align: center;
-  margin: 0; 
-  font-family: 'Zen Maru Gothic', sans-serif; 
+  margin: 0;
+  font-family: 'Zen Maru Gothic', sans-serif;
 }
 
 body {
-  font-family: 'Zen Maru Gothic', sans-serif; 
+  font-family: 'Zen Maru Gothic', sans-serif;
   background-color: #FFFFE0;
 }
 
 #ans-btn{
-  font-family: 'Zen Maru Gothic', sans-serif; 
+  font-family: 'Zen Maru Gothic', sans-serif;
   font-weight: bold;
 }
 
-   
+
 </style>
 
 </html>
