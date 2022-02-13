@@ -27,6 +27,8 @@ pip install -r requirements.txt
 uvicorn main:app --reload
 ```
 
+---
+
 ## apiサーバ起動
 
 ```bash
@@ -39,7 +41,15 @@ docker-compose exec api poetry run python -m app.migrate_db
 ### Swagger API Docs
 
 APIサーバ起動後
-http://localhost:8080/docs
+http://localhost:8000/docs
+
+### 問題と景品追加
+
+1. reef.present_categories にプレゼントジャンルを追加
+2. reef.presents にプレゼントを追加. is_usedはすべて0
+3. reef.quizzes に問題追加. order_numberは使ってないのでidと同じ数字. is_usedはすべて0
+
+---
 
 ## メモ
 

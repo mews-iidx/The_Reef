@@ -14,7 +14,7 @@ DB_URL = f"mysql+aiomysql://{db_user}:{db_pass}@{db_host}:{db_port}/{db_name}?ch
 engine = create_async_engine(DB_URL, echo=True)
 
 async_session = sessionmaker(
-    autocommit=True, autoflush=True, bind=engine, class_=AsyncSession
+    autocommit=False, autoflush=False, bind=engine, class_=AsyncSession
 )
 
 Base = declarative_base()

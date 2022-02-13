@@ -1,5 +1,6 @@
 from app.db import Base
 from sqlalchemy import Column, DateTime, Integer, String
+from sqlalchemy.dialects.mysql import TINYINT as Tinyint
 from sqlalchemy.orm import relationship
 from sqlalchemy.schema import ForeignKey
 from sqlalchemy.sql.expression import text
@@ -17,6 +18,7 @@ class Present(Base):
     amazon_url = Column(String(255), nullable=True)
     image_path = Column(String(255), nullable=True)
     winner = Column(String(255), nullable=True)
+    is_used = Column(Tinyint, index=True, nullable=False, default=0)
     created_at = Column(DateTime, server_default=current_timestamp(), nullable=False)
     updated_at = Column(
         DateTime,

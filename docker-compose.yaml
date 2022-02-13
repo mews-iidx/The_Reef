@@ -23,5 +23,14 @@ services:
     ports:
       - 3306:3306
 
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    volumes:
+      - ./frontend:/app
+    ports:
+      - 3000:3000
+
 volumes:
   mysql_data:

@@ -1,8 +1,8 @@
+from typing import Optional
+
 from pydantic import BaseModel
 
 
-class Quiz(BaseModel):
-    id: int
-    order_number: int
-    question: str
-    answer: str
+class GetQuizResponse(BaseModel):
+    quiz: str
+    image_url: Optional[str]
