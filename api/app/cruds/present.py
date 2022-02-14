@@ -1,7 +1,7 @@
 import random
 
 import app.models.present as present_model
-from sqlalchemy import func, select
+from sqlalchemy import func, select, update
 from sqlalchemy.engine import Result
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -46,3 +46,8 @@ async def choose_present(db: AsyncSession, genre_name):
     await db.refresh(result[0])
 
     return present
+
+
+async def reset_used_present(db: AsyncSession):
+    await db.execute(update(present_model.Present).values(is_used=0))
+    await db.commit()
