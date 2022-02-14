@@ -51,10 +51,5 @@ http://localhost:8000/docs
 
 ---
 
-## メモ
-
-## ワイヤーフレーム途中
-
-* [draw.io](https://drive.google.com/file/d/10_TuLvSiAlLqwT481x0TwDVYuAvxnWMN/view?usp=sharing)
 
 test
