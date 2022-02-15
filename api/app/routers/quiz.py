@@ -12,6 +12,11 @@ async def get_quiz(db: AsyncSession = Depends(get_db)):
     return await quiz_crud.get_quiz(db)
 
 
+@router.get("/answer", response_model=quiz_schema.GetAnswerResponse)
+async def get_answer(quiz_id: int, db: AsyncSession = Depends(get_db)):
+    return await quiz_crud.get_answer(db, quiz_id=quiz_id)
+
+
 @router.get("/quiz/reset/")
 async def reset_used_quiz(db: AsyncSession = Depends(get_db)):
     return await quiz_crud.reset_used_quiz(db)

@@ -13,6 +13,7 @@ async def get_quiz(db: AsyncSession) -> quiz_model.Quiz:
     quiz = result.first()
     if quiz is None:
         return {
+            "quiz_id": "",
             "question": "",
             "image_url": "",
             "is_enable": False,
@@ -27,6 +28,7 @@ async def get_quiz(db: AsyncSession) -> quiz_model.Quiz:
     )
 
     return {
+        "quiz_id": quiz.id,
         "question": quiz.question,
         "image_url": quiz.image_url,
         "is_enable": True,
@@ -43,3 +45,13 @@ async def update_used_quiz(db: AsyncSession, quiz_id: int):
 async def reset_used_quiz(db: AsyncSession):
     await db.execute(update(quiz_model.Quiz).values(is_used=0))
     await db.commit()
+
+
+async def get_answer(db: AsyncSession, quiz_id):
+    result: Result = await db.execute(
+        select(quiz_model.Quiz.id.label("quiz_id"), quiz_model.Quiz.answer).where(
+            quiz_model.Quiz.id == quiz_id
+        )
+    )
+
+    return result.first()
