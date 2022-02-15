@@ -26,7 +26,8 @@
         <!-- TODO: 80%じゃだめかも -->
         <img src='{{ ret.image_path }}'  style='height:60%'>
     </div>
-    <a href='/quiz' id='ans-btn' class="button is-warning is-pulled-right is-large">次へ</a>
+    <a href='/quiz' id='ans-btn' class="button is-warning is-pulled-right is-large">次の問題へ</a>
+    <a href='/random' id='next-btn' class="button is-info is-pulled-right is-large">もう一度抽選!</a>
   </div>
 </body>
 
@@ -49,6 +50,11 @@ body {
 }
 
 #ans-btn{
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-weight: bold;
+}
+
+#next-btn{
   font-family: 'Zen Maru Gothic', sans-serif;
   font-weight: bold;
 }
