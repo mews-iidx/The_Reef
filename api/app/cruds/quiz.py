@@ -45,3 +45,13 @@ async def update_used_quiz(db: AsyncSession, quiz_id: int):
 async def reset_used_quiz(db: AsyncSession):
     await db.execute(update(quiz_model.Quiz).values(is_used=0))
     await db.commit()
+
+
+async def get_answer(db: AsyncSession, quiz_id):
+    result: Result = await db.execute(
+        select(quiz_model.Quiz.id.label("quiz_id"), quiz_model.Quiz.answer).where(
+            quiz_model.Quiz.id == quiz_id
+        )
+    )
+
+    return result.first()

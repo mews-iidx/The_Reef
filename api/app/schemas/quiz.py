@@ -11,3 +11,12 @@ class GetQuizResponse(BaseModel):
 
     class Config:
         orm_mode = True
+
+
+class GetAnswerRequest(BaseModel):
+    quiz_id: int
+
+
+class GetAnswerResponse(BaseModel):
+    quiz_id: int
+    answer: str
