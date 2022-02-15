@@ -4,6 +4,7 @@ from pydantic import BaseModel
 
 
 class GetQuizResponse(BaseModel):
+    quiz_id: int
     question: str
     image_url: Optional[str]
     is_enable: bool

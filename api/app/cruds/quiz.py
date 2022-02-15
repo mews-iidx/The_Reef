@@ -13,6 +13,7 @@ async def get_quiz(db: AsyncSession) -> quiz_model.Quiz:
     quiz = result.first()
     if quiz is None:
         return {
+            "quiz_id": "",
             "question": "",
             "image_url": "",
             "is_enable": False,
@@ -27,6 +28,7 @@ async def get_quiz(db: AsyncSession) -> quiz_model.Quiz:
     )
 
     return {
+        "quiz_id": quiz.id,
         "question": quiz.question,
         "image_url": quiz.image_url,
         "is_enable": True,
