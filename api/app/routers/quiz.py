@@ -10,3 +10,8 @@ router = APIRouter()
 @router.get("/quiz", response_model=quiz_schema.GetQuizResponse)
 async def get_quiz(db: AsyncSession = Depends(get_db)):
     return await quiz_crud.get_quiz(db)
+
+
+@router.get("/quiz/reset/")
+async def reset_used_quiz(db: AsyncSession = Depends(get_db)):
+    return await quiz_crud.reset_used_quiz(db)

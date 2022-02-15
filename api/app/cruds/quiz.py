@@ -33,3 +33,8 @@ async def update_used_quiz(db: AsyncSession, quiz_id: int):
         update(quiz_model.Quiz).where(quiz_model.Quiz.id == quiz_id).values(is_used=1)
     )
     await db.commit()
+
+
+async def reset_used_quiz(db: AsyncSession):
+    await db.execute(update(quiz_model.Quiz).values(is_used=0))
+    await db.commit()
