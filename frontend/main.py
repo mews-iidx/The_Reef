@@ -58,5 +58,8 @@ async def read_item(request: Request, result_genre: str):
     if ret is None:
         return templates.TemplateResponse("index.html", {"request": request})
     j = ret.json()
-    print(j)
     return templates.TemplateResponse("result.html", {"request": request, "ret": j})
+
+@app.get("/present")
+async def read_item(request: Request):
+    return templates.TemplateResponse("present.html", {"request": request})
