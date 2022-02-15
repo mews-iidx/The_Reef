@@ -6,7 +6,7 @@ from pydantic import BaseModel
 class GetQuizResponse(BaseModel):
     question: str
     image_url: Optional[str]
-    is_continue: bool
+    is_enable: bool
 
     class Config:
         orm_mode = True

@@ -28,7 +28,8 @@ async def quiz(request: Request):
         return templates.TemplateResponse("index.html", {"request": request})
     j = ret.json()
 
-    if not j['is_continue'] :
+    print('is_enable', j['is_enable'])
+    if not j['is_enable'] :
         return templates.TemplateResponse("end.html", {"request": request})
 
     if j["image_url"] is None:

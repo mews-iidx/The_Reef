@@ -11,6 +11,13 @@ async def get_quiz(db: AsyncSession) -> quiz_model.Quiz:
         .order_by(quiz_model.Quiz.id)
     )
     quiz = result.first()
+    if quiz is None:
+        return {
+            "question": "",
+            "image_url": "",
+            "is_enable": False,
+        }
+
     quiz_id = quiz.id
 
     await update_used_quiz(db, quiz_id)
@@ -19,12 +26,10 @@ async def get_quiz(db: AsyncSession) -> quiz_model.Quiz:
         exists().where(quiz_model.Quiz.is_used == 0).select()
     )
 
-    is_quiz_continue = result.first()[0]
-
     return {
         "question": quiz.question,
         "image_url": quiz.image_url,
-        "is_continue": is_quiz_continue,
+        "is_enable": True,
     }
 
 
