@@ -1,5 +1,4 @@
 <html>
-
 <head>
   <!-- css framework bulma -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
@@ -49,9 +48,25 @@
   <div id='quiz-box' class="box" style='font-size: 2rem'>
     {{ ret.question }} <br>
   </div>
-    <a href='./random/' id='ans-btn' class="button is-warning is-pulled-right is-large">正解!</a>
+	<button class="js-modal-trigger button is-warning is-pulled-right " data-target="modal-js-example">正解!</button>
 </div>
 
+
+<div id='modal-js-example' class="modal">
+  <div class="modal-background" style='background-color: rgba(0,0,0,0.3)'></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">正解</p>
+      <button class="delete" aria-label="close"></button>
+    </header>
+    <section class="modal-card-body">
+       問題: {{ ret.question }} <br>
+       正解: {{ ret.answer }} <br>
+      <a href='./random/' class="button is-warning is-pulled-right">抽選!</a>
+    </section>
+  </div>
+</div>
+<script src="{{ url_for('static', path='scripts/modal.js') }}"></script>
 </body>
 
 </html>
