@@ -4,7 +4,7 @@ from sqlalchemy.engine import Result
 from sqlalchemy.ext.asyncio import AsyncSession
 
 
-async def get_quiz(db: AsyncSession) -> quiz_model.Quiz:
+async def get_quiz(db: AsyncSession):
     result: Result = await db.execute(
         select(quiz_model.Quiz.id, quiz_model.Quiz.question, quiz_model.Quiz.image_url)
         .filter(quiz_model.Quiz.is_used == 0)
@@ -13,7 +13,7 @@ async def get_quiz(db: AsyncSession) -> quiz_model.Quiz:
     quiz = result.first()
     if quiz is None:
         return {
-            "quiz_id": "",
+            "quiz_id": 0,
             "question": "",
             "image_url": "",
             "is_enable": False,
