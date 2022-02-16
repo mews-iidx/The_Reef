@@ -49,6 +49,10 @@
       font-family: 'Zen Maru Gothic', sans-serif;
       font-weight: bold;
     }
+
+    .modal-card-body span {
+      font-size: 40px;
+    }
   </style>
 
   <title> quiz </title>
@@ -76,8 +80,7 @@
         <button class="delete" aria-label="close"></button>
       </header>
       <section class="modal-card-body">
-        問題: {{ ret.question }} <br>
-        正解: {{ ret.answer }} <br>
+        <span>{{ ret.answer }}</span>
         <a href='./random/' class="button is-warning is-pulled-right">抽選!</a>
       </section>
     </div>
