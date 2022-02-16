@@ -13,14 +13,19 @@ document.addEventListener('DOMContentLoaded', () => {
       closeModal($modal);
     });
   }
+  //se.pause();
 
   // Add a click event on buttons to open a specific modal
   (document.querySelectorAll('.js-modal-trigger') || []).forEach(($trigger) => {
     const modal = $trigger.dataset.target;
     const $target = document.getElementById(modal);
     console.log($target);
+    const se = document.querySelector('#correct_se');
+
+    console.log($target);
 
     $trigger.addEventListener('click', () => {
+      se.play();
       openModal($target);
     });
   });
