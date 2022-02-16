@@ -56,7 +56,7 @@
 <div class='container'>
   <h1 class="title is-1">問題</h1>
   <div id='quiz-box' class="box" style='font-size: 2rem'>
-    {{ ret.question }} <br>
+    {{ ret.question | linebreaksbr | safe }} <br>
   </div>
 	<button class="js-modal-trigger button is-warning is-pulled-right " data-target="modal-js-example">正解!</button>
 </div>
