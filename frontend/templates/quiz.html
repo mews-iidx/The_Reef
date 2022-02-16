@@ -1,5 +1,12 @@
 <html>
 <head>
+  <audio autoplay>
+    <source src="{{ url_for('static', path='clock.mp3') }}">
+  </audio>
+
+  <audio id='correct_se' autostart='0' autostart='false'>
+    <source src="{{ url_for('static', path='Quiz-Correct_Answer02-1.mp3') }}">
+  </audio>
   <!-- css framework bulma -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
 
