@@ -27,8 +27,8 @@
     <div class="wrapper">
       {% for genre in genres %}
       <div class='container has-text-centered' style='margin-bottom: 10px;'>
-        <a href='./result/{{genre.name}}' class="button is-primary is-large is-outlined">{{ genre.name }} </a>
-        <div class='is-large'>残り数: {{ genre.count }} </div>
+        <a href='./result/{{genre.name}}' class="button is-primary is-large is-outlined"><span>{{ genre.name }}</span> </a>
+        <div class="text-box-20">残り数: <span>{{ genre.count }}</span> </div>
       </div>
       {% endfor %}
     </div>
@@ -60,6 +60,25 @@ margin-bottom: 6px;
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
+
+  .button {
+    width: 200px;
+  }
+
+  .button span{
+    font-weight: bold;
+  }
+
+  .text-box-20 {
+    width: 200px;
+    height: 40px;
+    font-size: 20px;
+  }
+
+  .text-box-20 span{
+    font-weight: bold;
+  }
+
 </style>
 
 </html>
