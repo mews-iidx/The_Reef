@@ -26,8 +26,8 @@
         <!-- TODO: 80%じゃだめかも -->
         <img id='result_img' src='{{ ret.image_path }}'  style='height:60%; transition-property: all; transition: 3s ease; opacity:0;'>
     </div>
-    <a href='/quiz' id='ans-btn' class="button is-warning is-pulled-right is-large">次の問題へ</a>
-    <a href='/random' id='next-btn' class="button is-info is-pulled-right is-large">もう一度抽選!</a>
+    <a href='/quiz' id='ans-btn' class="button is-warning is-pulled-right is-large" style='transition-property: all; transition: 3s ease; opacity:0;'>次の問題へ</a>
+    <a href='/random' id='next-btn' class="button is-info is-pulled-right is-large" style='transition-property: all; transition: 3s ease; opacity:0;'>もう一度抽選!</a>
   </div>
 </body>
 <script>
@@ -35,6 +35,8 @@
     
     const result_img = document.getElementById('result_img');
     const result = document.getElementById('result');
+    const ans = document.getElementById('ans-btn');
+    const next = document.getElementById('next-btn');
     
     const op = async function() {
         await sleep(1500);
@@ -42,6 +44,10 @@
         result_img.style.opacity = 1;
         await sleep(1000);
         result.style.opacity = 1;
+        await sleep(100);
+        ans.style.opacity = 1;
+        await sleep(100);
+        next.style.opacity = 1;
         
     };
     
