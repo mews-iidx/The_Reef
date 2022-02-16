@@ -21,7 +21,7 @@
 
   <div class='container'>
     <h1 class="title is-1">景品は・・・</h1>
-    <h1 class="title is-1">{{ ret.name }} です!!</h1>
+    <h1 class="title is-1" id='result' style='transition-property: all; transition: 3s ease; opacity:0;'>{{ ret.name }} です!!</h1>
     <div class='has-text-centered'>
         <!-- TODO: 80%じゃだめかも -->
         <img id='result_img' src='{{ ret.image_path }}'  style='height:60%; transition-property: all; transition: 3s ease; opacity:0;'>
@@ -31,19 +31,23 @@
   </div>
 </body>
 <script>
-const result_img = document.getElementById('result_img');
-
-const op = () =>{
-    console.log('hoge');
-    result_img.style.opacity = 1;
-};
-
-window.onload = function(){
-	op();
-}
-
-
-
+    const sleep = waitTime => new Promise( resolve => setTimeout(resolve, waitTime) );
+    
+    const result_img = document.getElementById('result_img');
+    const result = document.getElementById('result');
+    
+    const op = async function() {
+        await sleep(1500);
+        console.log('hoge');
+        result_img.style.opacity = 1;
+        await sleep(1000);
+        result.style.opacity = 1;
+        
+    };
+    
+    window.onload = function(){
+    	op();
+    }
 </script>
 
 <style>
