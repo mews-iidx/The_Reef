@@ -22,8 +22,8 @@
 <body>
 
 
-<div class='container'>
-  <h1 class="title is-1">ジャンルを選択！</h1>
+  <div class='container'>
+    <h1 class="title is-1">ジャンルを選択！</h1>
     {% for genre in genres %}
     <div class='container has-text-centered' style='margin-bottom: 10px;'>
       <a href='./result/{{genre.name}}' class="button is-primary is-large is-outlined">{{ genre.name }} </a>
@@ -31,31 +31,28 @@
     </div>
     {% endfor %}
 
-</div>
+  </div>
 
 </body>
 
 <style>
-
-
-/*
+  /*
 .button{
 margin-top: 3px;
 margin-bottom: 6px;
 } */
-h1, h2, h3 {
-  text-align: center;
-  margin: 0;
-  font-family: 'Zen Maru Gothic', sans-serif;
-}
+  h1,
+  h2,
+  h3 {
+    text-align: center;
+    margin: 0;
+    font-family: 'Zen Maru Gothic', sans-serif;
+  }
 
-body {
-  font-family: 'Zen Maru Gothic', sans-serif;
-  background-color: #FFFFE0;
-}
-
-
-
+  body {
+    font-family: 'Zen Maru Gothic', sans-serif;
+    background-color: #FFFFE0;
+  }
 </style>
 
 </html>
