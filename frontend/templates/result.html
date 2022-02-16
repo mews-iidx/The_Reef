@@ -24,12 +24,27 @@
     <h1 class="title is-1">{{ ret.name }} です!!</h1>
     <div class='has-text-centered'>
         <!-- TODO: 80%じゃだめかも -->
-        <img src='{{ ret.image_path }}'  style='height:60%'>
+        <img id='result_img' src='{{ ret.image_path }}'  style='height:60%; transition-property: all; transition: 3s ease; opacity:0;'>
     </div>
     <a href='/quiz' id='ans-btn' class="button is-warning is-pulled-right is-large">次の問題へ</a>
     <a href='/random' id='next-btn' class="button is-info is-pulled-right is-large">もう一度抽選!</a>
   </div>
 </body>
+<script>
+const result_img = document.getElementById('result_img');
+
+const op = () =>{
+    console.log('hoge');
+    result_img.style.opacity = 1;
+};
+
+window.onload = function(){
+	op();
+}
+
+
+
+</script>
 
 <style>
 
