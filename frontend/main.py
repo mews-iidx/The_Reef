@@ -23,14 +23,17 @@ async def route_index(request: Request):
 async def quiz(request: Request):
     ret = requests.get(API_ENDPOINT + "/quiz")
 
-    # TODO: エラーハンドリングしたほうがよい
-    if ret is None:
-        return templates.TemplateResponse("index.html", {"request": request})
-
     if not int(ret.status_code) == 200:
         return templates.TemplateResponse("end.html", {"request": request})
 
+    
+
     j = ret.json()
+
+    ans_ret = requests.get(API_ENDPOINT + "/answer",params={'quiz_id' :j['quiz_id']} )
+
+    answer = ans_ret.json()['answer']
+    j['answer'] = answer
     if j["image_url"] is None:
         return templates.TemplateResponse("quiz.html", {"request": request, "ret": j})
     else:
