@@ -14,6 +14,13 @@ API_ENDPOINT = "http://api:8000"
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
 
+def linebreaksbr(arg):
+    return arg.replace("\r\n", "<br>")
+
+
+templates.env.filters["linebreaksbr"] = linebreaksbr
+
+
 @app.get("/")
 async def route_index(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
@@ -26,14 +33,12 @@ async def quiz(request: Request):
     if not int(ret.status_code) == 200:
         return templates.TemplateResponse("end.html", {"request": request})
 
-    
-
     j = ret.json()
 
-    ans_ret = requests.get(API_ENDPOINT + "/answer",params={'quiz_id' :j['quiz_id']} )
+    ans_ret = requests.get(API_ENDPOINT + "/answer", params={"quiz_id": j["quiz_id"]})
 
-    answer = ans_ret.json()['answer']
-    j['answer'] = answer
+    answer = ans_ret.json()["answer"]
+    j["answer"] = answer
     if j["image_url"] is None:
         return templates.TemplateResponse("quiz.html", {"request": request, "ret": j})
     else:
