@@ -26,12 +26,11 @@ async def quiz(request: Request):
     # TODO: エラーハンドリングしたほうがよい
     if ret is None:
         return templates.TemplateResponse("index.html", {"request": request})
-    j = ret.json()
 
-    print('is_enable', j['is_enable'])
-    if not j['is_enable'] :
+    if not int(ret.status_code) == 200:
         return templates.TemplateResponse("end.html", {"request": request})
 
+    j = ret.json()
     if j["image_url"] is None:
         return templates.TemplateResponse("quiz.html", {"request": request, "ret": j})
     else:
