@@ -30,10 +30,11 @@ async def route_index(request: Request):
 async def quiz(request: Request):
     ret = requests.get(API_ENDPOINT + "/quiz")
 
-    if not int(ret.status_code) == 200:
-        return templates.TemplateResponse("end.html", {"request": request})
-
     j = ret.json()
+
+    if not j['is_enable']:
+        return templates.TemplateResponse("end.html", {"request": request})
+    print('is_enable', j['is_enable'])
 
     ans_ret = requests.get(API_ENDPOINT + "/answer", params={"quiz_id": j["quiz_id"]})
 
