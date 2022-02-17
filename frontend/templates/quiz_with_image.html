@@ -22,16 +22,19 @@
   <script src="{{ url_for('static', path='scripts/scripts.js') }}"></script>
   <link rel='shotcut icon' href="{{ url_for('static', path='favicon.ico') }}">
   <style>
-    .container{
+    .container {
       height: 100%;
       width: 100%;
     }
-    .box{
+
+    .box {
 
       height: 80%;
     }
 
-    h1, h2, h3 {
+    h1,
+    h2,
+    h3 {
       text-align: center;
       margin: 0;
       font-family: 'Zen Maru Gothic', sans-serif;
@@ -42,9 +45,13 @@
       background-color: #FFFFE0;
     }
 
-    #ans-btn{
+    #ans-btn {
       font-family: 'Zen Maru Gothic', sans-serif;
       font-weight: bold;
+    }
+
+    .modal-card-body span {
+      font-size: 40px;
     }
   </style>
 
@@ -53,33 +60,32 @@
 
 <body>
 
-<div class='container'>
-  <h1 class="title is-1">問題</h1>
-  <div id='quiz-box' class="box" style='font-size: 2rem'>
-    {{ ret.question }} <br>
-    <div class='container has-text-centered'>
+  <div class='container'>
+    <h1 class="title is-1">問題</h1>
+    <div id='quiz-box' class="box" style='font-size: 2rem'>
+      {{ ret.question }} <br>
+      <div class='container has-text-centered'>
         <!-- TODO: 80%じゃだめかも -->
-        <img src='{{ ret.image_url }}'  style='height:80%'>
+        <img src='{{ ret.image_url }}' style='height:80%'>
+      </div>
+    </div>
+    <button class="js-modal-trigger button is-warning is-pulled-right " data-target="modal-js-example">正解!</button>
+  </div>
+
+  <div id='modal-js-example' class="modal">
+    <div class="modal-background" style='background-color: rgba(0,0,0,0.3)'></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">正解</p>
+        <button class="delete" aria-label="close"></button>
+      </header>
+      <section class="modal-card-body">
+        <span>{{ ret.answer }}</span>
+        <a href='./random/' class="button is-warning is-pulled-right">抽選!</a>
+      </section>
     </div>
   </div>
-	<button class="js-modal-trigger button is-warning is-pulled-right " data-target="modal-js-example">正解!</button>
-</div>
-
-<div id='modal-js-example' class="modal">
-  <div class="modal-background" style='background-color: rgba(0,0,0,0.3)'></div>
-  <div class="modal-card">
-    <header class="modal-card-head">
-      <p class="modal-card-title">正解</p>
-      <button class="delete" aria-label="close"></button>
-    </header>
-    <section class="modal-card-body">
-       問題: {{ ret.question }} <br>
-       正解: {{ ret.answer }} <br>
-      <a href='./random/' class="button is-warning is-pulled-right">抽選!</a>
-    </section>
-  </div>
-</div>
-<script src="{{ url_for('static', path='scripts/modal.js') }}"></script>
+  <script src="{{ url_for('static', path='scripts/modal.js') }}"></script>
 
 </body>
 
